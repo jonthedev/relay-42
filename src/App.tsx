@@ -1,5 +1,12 @@
+import { BtnPrimary } from "./components"
+
 function App() {
-  return <>Relay 42</>
+  return (
+    <>
+      <h1>Relay 42</h1>
+      <BtnPrimary />
+    </>
+  )
 }
 
 export default App
