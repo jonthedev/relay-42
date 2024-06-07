@@ -9,6 +9,7 @@ export type DepartureDate = {
 }
 
 export type Mission = {
+  id: number
   name: string
   members: number
   destination: string

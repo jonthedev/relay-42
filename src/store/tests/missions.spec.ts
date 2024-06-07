@@ -5,24 +5,18 @@ import missionsReducer, {
   type Missions,
   addMission
 } from "@/features/missions/missionsSlice"
+import { mockInitialMissionsState, mockMission } from "./missionsMockData"
 
 describe("missions slice", () => {
   it("should return the initial missions state", () => {
-    const initialState: Missions = {
-      missions: []
-    }
+    const initialState: Missions = mockInitialMissionsState
     expect(store.getState().missions).toEqual(initialState)
   })
 
   describe("reducer: addMission", () => {
     it("should handle adding a new mission", () => {
-      const prevMissionsState: Missions = { missions: [] }
-      const newMission: Mission = {
-        name: "Expedition 2021-11",
-        members: 2,
-        destination: "Mars alpha-116",
-        departure: { day: "07", month: "05", year: "2023" }
-      }
+      const prevMissionsState: Missions = mockInitialMissionsState
+      const newMission: Mission = mockMission
       const newState = missionsReducer(
         prevMissionsState,
         addMission(newMission)
