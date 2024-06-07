@@ -3,9 +3,14 @@ import { store } from "@/store/store"
 import missionsReducer, {
   type Mission,
   type Missions,
-  addMission
+  addMission,
+  removeMission
 } from "@/features/missions/missionsSlice"
-import { mockInitialMissionsState, mockMission } from "./missionsMockData"
+import {
+  mockInitialMissionsState,
+  mockMission,
+  mockMissions
+} from "./missionsMockData"
 
 describe("missions slice", () => {
   it("should return the initial missions state", () => {
@@ -24,6 +29,24 @@ describe("missions slice", () => {
       expect(newState).toEqual({
         missions: [newMission]
       })
+    })
+  })
+
+  describe("reducer: removeMission", () => {
+    it("should handle removing a mission by id", () => {
+      const prevMissionsState: Missions = mockMissions
+      const mockMissionId = 1
+      const newState = missionsReducer(
+        prevMissionsState,
+        removeMission(mockMissionId)
+      )
+      expect(newState.missions).toHaveLength(
+        prevMissionsState.missions.length - 1
+      )
+
+      expect(
+        newState.missions.some(mission => mission.id === mockMissionId)
+      ).toBeFalsy()
     })
   })
 })

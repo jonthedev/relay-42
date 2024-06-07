@@ -31,11 +31,17 @@ export const missionsSlice = createSlice({
     // business logic
     addMission: (state, action: PayloadAction<Mission>) => {
       state.missions.push(action.payload)
+    },
+    removeMission: (state, action: PayloadAction<number>) => {
+      const updatedMissions = state.missions.filter(
+        mission => mission.id !== action.payload
+      )
+      state.missions = updatedMissions
     }
   }
 })
 
-export const { addMission } = missionsSlice.actions
+export const { addMission, removeMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
 

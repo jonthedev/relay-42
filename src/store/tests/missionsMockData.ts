@@ -1,4 +1,4 @@
-import { type Mission, type Missions } from "@/features/missions/missionsSlice" // Adjust import path based on your project structure
+import { type Mission, type Missions } from "@/features/missions/missionsSlice"
 
 export const mockInitialMissionsState: Missions = {
   missions: []
@@ -14,19 +14,20 @@ export const mockMission: Mission = {
 
 export const mockMissions: Missions = {
   missions: [
+    mockMission,
     {
       id: 2,
-      name: "Mission A",
-      members: 3,
-      destination: "Moon Base",
-      departure: { day: "15", month: "08", year: "2023" }
-    },
-    {
-      id: 3,
       name: "Mission B",
       members: 5,
       destination: "Jupiter Outpost",
       departure: { day: "22", month: "10", year: "2023" }
+    },
+    {
+      id: 3,
+      name: "Mission C",
+      members: 5,
+      destination: "Jupiter Outpost",
+      departure: { day: "01", month: "07", year: "2024" }
     }
   ]
 }
