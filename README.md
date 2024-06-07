@@ -21,6 +21,8 @@ Test case for Relay 42
 
 `Redux Toolkit:` The official, recommended way to write Redux logic.
 
+`React Redux:` Official React bindings for Redux.
+
 `Vite:` A fast build tool and development server.
 
 `Tailwind CSS:` A utility-first CSS framework.
@@ -80,6 +82,9 @@ Test case for Relay 42
   - **components**: Reusable components.
     - **index.ts**: Exports for components.
     - **ui**: ShadCn components are generated here when using the cli.
+  - **features**: Redux slices
+    - **missions**
+  - **store**: Global store for application data
   - **index.css**: Global CSS file.
   - **main.tsx**: Entry point for the React application.
   - **utils**
