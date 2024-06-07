@@ -2,11 +2,24 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 
-export type MissionsState = {
-  missions: string[]
+export type DepartureDate = {
+  day: string
+  month: string
+  year: string
 }
 
-const initialState: MissionsState = {
+export type Mission = {
+  name: string
+  members: number
+  destination: string
+  departure: DepartureDate
+}
+
+export type Missions = {
+  missions: Mission[]
+}
+
+const initialState: Missions = {
   missions: []
 }
 
@@ -15,7 +28,7 @@ export const missionsSlice = createSlice({
   initialState,
   reducers: {
     // business logic
-    addMission: (state, action: PayloadAction<string>) => {
+    addMission: (state, action: PayloadAction<Mission>) => {
       state.missions.push(action.payload)
     }
   }
