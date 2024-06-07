@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 
-interface MissionState {
+interface MissionsState {
   missions: string[]
 }
 
-const initialState: MissionState = {
+const initialState: MissionsState = {
   missions: []
 }
 
