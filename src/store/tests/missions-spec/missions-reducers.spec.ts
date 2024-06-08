@@ -30,17 +30,19 @@ describe("missions: reducers", () => {
   describe("removeMission", () => {
     it("should handle removing a mission", () => {
       const prevMissionsState: Missions = mockMissions
-      const mission = mockMission
-      const newState = missionsReducer(
+
+      const stateWithMissionRemoved = missionsReducer(
         prevMissionsState,
-        removeMission(mission)
+        removeMission(mockMission)
       )
-      expect(newState.missions).toHaveLength(
+      expect(stateWithMissionRemoved.missions).toHaveLength(
         prevMissionsState.missions.length - 1
       )
 
       expect(
-        newState.missions.some(mission => mission.id === mockMission.id)
+        stateWithMissionRemoved.missions.some(
+          mission => mission.id === mockMission.id
+        )
       ).toBeFalsy()
     })
   })
