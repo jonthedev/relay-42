@@ -37,11 +37,18 @@ export const missionsSlice = createSlice({
         mission => mission.id !== action.payload
       )
       state.missions = updatedMissions
+    },
+    editMission: (state, action: PayloadAction<Mission>) => {
+      const missionIndx = state.missions.findIndex(
+        mission => mission.id === action.payload.id
+      )
+      state.missions[missionIndx] = action.payload
     }
   }
 })
 
-export const { addMission, removeMission } = missionsSlice.actions
+export const { addMission, removeMission, editMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
+
 export default missionsSlice.reducer

@@ -54,4 +54,8 @@ describe("missions slice", () => {
       ).toBeFalsy()
     })
   })
+
+  describe("reducer: editMission", () => {
+    it("should handle editing a mission by id", () => {})
+  })
 })
