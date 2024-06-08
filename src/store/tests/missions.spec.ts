@@ -1,21 +1,26 @@
 import { describe, it, expect } from "vitest"
-import { store } from "@/store/store"
 import missionsReducer, {
   type Mission,
   type Missions,
   addMission,
-  removeMission
+  removeMission,
+  selectMissions
 } from "@/features/missions/missionsSlice"
 import {
   mockInitialMissionsState,
   mockMission,
   mockMissions
 } from "./missionsMockData"
+import { type RootState } from "@/store/store"
 
 describe("missions slice", () => {
   it("should return the initial missions state", () => {
-    const initialState: Missions = mockInitialMissionsState
-    expect(store.getState().missions).toEqual(initialState)
+    const initialState: RootState = {
+      missions: mockInitialMissionsState
+    }
+    const selectedMissions: Missions = selectMissions(initialState)
+
+    expect(selectedMissions).toEqual(mockInitialMissionsState)
   })
 
   describe("reducer: addMission", () => {

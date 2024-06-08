@@ -44,5 +44,4 @@ export const missionsSlice = createSlice({
 export const { addMission, removeMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
-
 export default missionsSlice.reducer
