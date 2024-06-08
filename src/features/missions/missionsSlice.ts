@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
+import { findIndexByPredicate } from "@/utils"
 
 export type DepartureDate = {
   day: string
@@ -25,43 +26,52 @@ const initialState: Missions = {
   error: null
 }
 
-const findMissionIndexById = (missions: Mission[], id: number): number => {
-  return missions.findIndex(mission => mission.id === id)
-}
-
 export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
     addMission: (state, action: PayloadAction<Mission>) => {
-      if (findMissionIndexById(state.missions, action.payload.id) !== -1) {
-        state.error = "Mission with this ID already exists"
+      const { missions } = state
+      const index = findIndexByPredicate(
+        missions,
+        mission => mission.id === action.payload.id
+      )
+
+      if (index !== -1) {
+        state.error = "This mission already exists"
         return
       }
+
       state.missions.push(action.payload)
       state.error = null
     },
-    removeMission: (state, action: PayloadAction<number>) => {
-      const missionIndex = findMissionIndexById(state.missions, action.payload)
-      if (missionIndex === -1) {
+    removeMission: (state, action: PayloadAction<Mission>) => {
+      const { missions } = state
+      const index = findIndexByPredicate(
+        missions,
+        mission => mission.id === action.payload.id
+      )
+
+      if (index === -1) {
         state.error = "Mission not found"
         return
       }
-      state.missions = state.missions.filter(
-        mission => mission.id !== action.payload
-      )
+
+      state.missions.splice(index, 1)
       state.error = null
     },
     editMission: (state, action: PayloadAction<Mission>) => {
-      const missionIndex = findMissionIndexById(
+      const index = findIndexByPredicate(
         state.missions,
-        action.payload.id
+        mission => mission.id === action.payload.id
       )
-      if (missionIndex === -1) {
+
+      if (index === -1) {
         state.error = "Mission not found"
         return
       }
-      state.missions[missionIndex] = action.payload
+
+      state.missions[index] = action.payload
       state.error = null
     }
   }

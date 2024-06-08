@@ -7,7 +7,7 @@ import { mockInitialMissionsState } from "./missionsMockData"
 import { type RootState } from "@/store/store"
 
 describe("missions", () => {
-  it("should return the initial missions state", () => {
+  it("should return the initial state", () => {
     const initialState: RootState = {
       missions: mockInitialMissionsState
     }

@@ -28,24 +28,24 @@ describe("missions: reducers", () => {
   })
 
   describe("removeMission", () => {
-    it("should handle removing a mission by id", () => {
+    it("should handle removing a mission", () => {
       const prevMissionsState: Missions = mockMissions
-      const mockMissionId = 1
+      const mission = mockMission
       const newState = missionsReducer(
         prevMissionsState,
-        removeMission(mockMissionId)
+        removeMission(mission)
       )
       expect(newState.missions).toHaveLength(
         prevMissionsState.missions.length - 1
       )
 
       expect(
-        newState.missions.some(mission => mission.id === mockMissionId)
+        newState.missions.some(mission => mission.id === mockMission.id)
       ).toBeFalsy()
     })
   })
 
   describe("editMission", () => {
-    it("should handle editing a mission by id", () => {})
+    it("should handle editing a mission", () => {})
   })
 })
