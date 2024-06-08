@@ -59,4 +59,16 @@ describe("missions slice", () => {
   describe("reducer: editMission", () => {
     it("should handle editing a mission by id", () => {})
   })
+
+  describe("selector: selectMissionById", () => {
+    it("should handle finding a mission by id", () => {})
+  })
+
+  describe("selector: selectMissions", () => {
+    it("should return all missions", () => {})
+  })
+
+  describe("selector: selectMissionsError", () => {
+    it("should return mission error state", () => {})
+  })
 })

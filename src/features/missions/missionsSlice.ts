@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 
 export type DepartureDate = {
@@ -70,6 +70,12 @@ export const missionsSlice = createSlice({
 export const { addMission, removeMission, editMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
+
+export const selectMissionById = (missionId: number) =>
+  createSelector(selectMissions, ({ missions }) =>
+    missions.find(mission => mission.id === missionId)
+  )
+
 export const selectMissionsError = (state: RootState) => state.missions.error
 
 export default missionsSlice.reducer
