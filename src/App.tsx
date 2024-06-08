@@ -6,7 +6,7 @@ import {
 } from "@/features/missions/missionsSlice"
 
 import { BtnPrimary } from "./components"
-import { mockMission } from "./store/tests/missionsMockData"
+import { mockMission } from "./store/tests/missions-spec/missionsMockData"
 
 function App() {
   const { missions } = useSelector(selectMissions)
