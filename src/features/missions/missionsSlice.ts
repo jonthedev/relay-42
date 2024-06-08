@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
-import type { PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 
 export type DepartureDate = {
@@ -18,31 +17,52 @@ export type Mission = {
 
 export type Missions = {
   missions: Mission[]
+  error: string | null
 }
 
 const initialState: Missions = {
-  missions: []
+  missions: [],
+  error: null
+}
+
+const findMissionIndexById = (missions: Mission[], id: number): number => {
+  return missions.findIndex(mission => mission.id === id)
 }
 
 export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
-    // business logic
     addMission: (state, action: PayloadAction<Mission>) => {
+      if (findMissionIndexById(state.missions, action.payload.id) !== -1) {
+        state.error = "Mission with this ID already exists"
+        return
+      }
       state.missions.push(action.payload)
+      state.error = null
     },
     removeMission: (state, action: PayloadAction<number>) => {
-      const updatedMissions = state.missions.filter(
+      const missionIndex = findMissionIndexById(state.missions, action.payload)
+      if (missionIndex === -1) {
+        state.error = "Mission not found"
+        return
+      }
+      state.missions = state.missions.filter(
         mission => mission.id !== action.payload
       )
-      state.missions = updatedMissions
+      state.error = null
     },
     editMission: (state, action: PayloadAction<Mission>) => {
-      const missionIndx = state.missions.findIndex(
-        mission => mission.id === action.payload.id
+      const missionIndex = findMissionIndexById(
+        state.missions,
+        action.payload.id
       )
-      state.missions[missionIndx] = action.payload
+      if (missionIndex === -1) {
+        state.error = "Mission not found"
+        return
+      }
+      state.missions[missionIndex] = action.payload
+      state.error = null
     }
   }
 })
@@ -50,5 +70,6 @@ export const missionsSlice = createSlice({
 export const { addMission, removeMission, editMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
+export const selectMissionsError = (state: RootState) => state.missions.error
 
 export default missionsSlice.reducer

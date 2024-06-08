@@ -24,7 +24,9 @@ function App() {
       </button>
       <button
         onClick={() =>
-          dispatch(editMission({ ...mockMission, destination: "Earth" }))
+          dispatch(
+            editMission({ ...mockMission, destination: "Earth", id: 200 })
+          )
         }
       >
         Edit Mission

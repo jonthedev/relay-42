@@ -1,7 +1,8 @@
 import { type Mission, type Missions } from "@/features/missions/missionsSlice"
 
 export const mockInitialMissionsState: Missions = {
-  missions: []
+  missions: [],
+  error: null
 }
 
 export const mockMission: Mission = {
@@ -29,5 +30,6 @@ export const mockMissions: Missions = {
       destination: "Jupiter Outpost",
       departure: { day: "01", month: "07", year: "2024" }
     }
-  ]
+  ],
+  error: null
 }

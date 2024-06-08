@@ -32,7 +32,8 @@ describe("missions slice", () => {
         addMission(newMission)
       )
       expect(newState).toEqual({
-        missions: [newMission]
+        missions: [newMission],
+        error: null
       })
     })
   })
