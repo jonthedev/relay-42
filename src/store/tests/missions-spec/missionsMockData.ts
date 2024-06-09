@@ -5,6 +5,12 @@ export const mockInitialMissionsState: Missions = {
   error: null
 }
 
+/*
+
+! TODO Create a members type, Pilot, Engineer & Passenger
+! TODO Create a job type, Navigation, Solar panels, Maintenance, Mechanics & Navigation
+
+*/
 export const mockMission: Mission = {
   id: 1,
   name: "Expedition 2021-11",
@@ -13,7 +19,7 @@ export const mockMission: Mission = {
   departure: { day: "07", month: "05", year: "2024" }
 }
 
-export const mockMissions: Missions = {
+export const mockMissionsState: Missions = {
   missions: [
     mockMission,
     {

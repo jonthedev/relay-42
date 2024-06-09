@@ -9,7 +9,7 @@ import { describe, it, expect } from "vitest"
 import {
   mockInitialMissionsState,
   mockMission,
-  mockMissions
+  mockMissionsState
 } from "./missionsMockData"
 import { findIndexByPredicate } from "@/utils"
 
@@ -32,7 +32,7 @@ describe("missions: reducers", () => {
 
   describe("removeMission", () => {
     it("should handle removing a mission", () => {
-      const prevMissionsState: Missions = mockMissions
+      const prevMissionsState: Missions = mockMissionsState
 
       const stateWithMissionRemoved = missionsReducer(
         prevMissionsState,
@@ -59,7 +59,7 @@ describe("missions: reducers", () => {
       }
 
       const stateWithEditedMission = missionsReducer(
-        mockMissions,
+        mockMissionsState,
         editMission(editedMission)
       )
 
