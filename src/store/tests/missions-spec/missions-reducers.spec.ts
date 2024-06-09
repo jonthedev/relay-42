@@ -13,7 +13,6 @@ import {
 } from "./missionsMockData"
 import { findIndexByPredicate } from "@/utils"
 
-//TODO: MAKE THESE REDUCERS MORE GENERIC AS SOME OF THESE COULD APPLY TO OTHER PIECES OF STATE
 describe("missions: reducers", () => {
   describe("addMission", () => {
     it("should handle adding a new mission", () => {

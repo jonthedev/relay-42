@@ -1,4 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 import { findIndexByPredicate } from "@/utils"
 
@@ -81,10 +81,11 @@ export const { addMission, removeMission, editMission } = missionsSlice.actions
 
 export const selectMissions = (state: RootState) => state.missions
 
-export const selectMissionById = (missionId: number) =>
-  createSelector(selectMissions, ({ missions }) =>
-    missions.find(mission => mission.id === missionId)
-  )
+export const selectMission = (
+  state: RootState,
+  id: number
+): Mission | undefined =>
+  state.missions.missions.find(mission => mission.id === id)
 
 export const selectMissionsError = (state: RootState) => state.missions.error
 
