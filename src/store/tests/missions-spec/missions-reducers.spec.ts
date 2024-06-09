@@ -2,6 +2,7 @@ import missionsReducer, {
   Mission,
   Missions,
   addMission,
+  editMission,
   removeMission
 } from "@/features/missions/missionsSlice"
 import { describe, it, expect } from "vitest"
@@ -10,7 +11,9 @@ import {
   mockMission,
   mockMissions
 } from "./missionsMockData"
+import { findIndexByPredicate } from "@/utils"
 
+//TODO: MAKE THESE REDUCERS MORE GENERIC AS SOME OF THESE COULD APPLY TO OTHER PIECES OF STATE
 describe("missions: reducers", () => {
   describe("addMission", () => {
     it("should handle adding a new mission", () => {
@@ -48,6 +51,26 @@ describe("missions: reducers", () => {
   })
 
   describe("editMission", () => {
-    it("should handle editing a mission", () => {})
+    it("should handle editing a mission", () => {
+      const editedMission: Mission = {
+        ...mockMission,
+        destination: "Sun",
+        name: "Solar Plane"
+      }
+
+      const stateWithEditedMission = missionsReducer(
+        mockMissions,
+        editMission(editedMission)
+      )
+
+      const index = findIndexByPredicate(
+        stateWithEditedMission.missions,
+        mission => mission.id === editedMission.id
+      )
+
+      expect(index).not.toBe(-1)
+
+      expect(stateWithEditedMission.missions[index]).toEqual(editedMission)
+    })
   })
 })

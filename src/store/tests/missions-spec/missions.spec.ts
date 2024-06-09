@@ -6,6 +6,7 @@ import {
 import { mockInitialMissionsState } from "./missionsMockData"
 import { type RootState } from "@/store/store"
 
+//TODO: MAKE THESE INITIAL STATE MORE GENERIC AS SOME OF THESE COULD APPLY TO OTHER PIECES OF STATE
 describe("missions", () => {
   it("should return the initial state", () => {
     const initialState: RootState = {
