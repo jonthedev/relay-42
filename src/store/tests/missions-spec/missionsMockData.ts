@@ -1,4 +1,10 @@
 import { type Mission, type Missions } from "@/features/missions/missionsSlice"
+import { UUID } from "@/types"
+
+// Predefined mock UUIDs
+export const mockUUID1: UUID = "123e4567-e89b-12d3-a456-426614174000"
+export const mockUUID2: UUID = "223e4567-e89b-12d3-a456-426614174001"
+export const mockUUID3: UUID = "323e4567-e89b-12d3-a456-426614174002"
 
 export const mockInitialMissionsState: Missions = {
   missions: [],
@@ -12,7 +18,7 @@ export const mockInitialMissionsState: Missions = {
 
 */
 export const mockMission: Mission = {
-  id: 1,
+  id: mockUUID1,
   name: "Expedition 2021-11",
   members: 2,
   destination: "Mars alpha-116",
@@ -23,14 +29,14 @@ export const mockMissionsState: Missions = {
   missions: [
     mockMission,
     {
-      id: 2,
+      id: mockUUID2,
       name: "Mission B",
       members: 5,
       destination: "Jupiter Outpost",
       departure: { day: "22", month: "10", year: "2023" }
     },
     {
-      id: 3,
+      id: mockUUID3,
       name: "Mission C",
       members: 5,
       destination: "Jupiter Outpost",

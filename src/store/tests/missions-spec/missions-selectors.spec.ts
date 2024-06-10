@@ -7,7 +7,8 @@ import { describe, expect, it } from "vitest"
 import {
   mockInitialMissionsState,
   mockMission,
-  mockMissionsState
+  mockMissionsState,
+  mockUUID1
 } from "./missionsMockData"
 import { RootState } from "@/store/store"
 
@@ -28,14 +29,14 @@ describe("missions: selectors", () => {
       missions: mockMissionsState
     }
     it("should handle selecting a mission by id", () => {
-      const selectedMission = selectMission(state, 1)
+      const selectedMission = selectMission(state, mockUUID1)
 
       expect(selectMission).toBeDefined()
       expect(selectedMission).toEqual(mockMission)
     })
 
     it("should return undefined if a mission doesn't exist", () => {
-      const selectedMission = selectMission(state, 500)
+      const selectedMission = selectMission(state, "500")
 
       expect(selectMission).toBeDefined()
       expect(selectedMission).toBeUndefined()
