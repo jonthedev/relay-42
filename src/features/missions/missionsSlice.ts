@@ -3,6 +3,7 @@ import type { RootState } from "@/store/store"
 import { findIndexByPredicate } from "@/utils"
 import { v4 as uuidv4 } from "uuid"
 import { UUID } from "@/types"
+import { CrewMember } from "@/types/members"
 
 export type DepartureDate = {
   day: string
@@ -13,7 +14,7 @@ export type DepartureDate = {
 export type Mission = {
   id: UUID
   name: string
-  members: number
+  members: CrewMember[]
   destination: string
   departure: DepartureDate
 }
@@ -51,7 +52,7 @@ export const missionsSlice = createSlice({
       state.missions.push(newMission)
       state.error = null
     },
-    removeMission: (state, action: PayloadAction<Mission>) => {
+    removeMission: (state, action: PayloadAction<Pick<Mission, "id">>) => {
       const { missions } = state
       const index = findIndexByPredicate(
         missions,

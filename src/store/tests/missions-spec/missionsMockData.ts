@@ -1,26 +1,75 @@
 import { type Mission, type Missions } from "@/features/missions/missionsSlice"
-import { UUID } from "@/types"
+import { CrewMember, UUID } from "@/types"
 
-// Predefined mock UUIDs
-export const mockUUID1: UUID = "123e4567-e89b-12d3-a456-426614174000"
-export const mockUUID2: UUID = "223e4567-e89b-12d3-a456-426614174001"
-export const mockUUID3: UUID = "323e4567-e89b-12d3-a456-426614174002"
+export const mockMissionId1: UUID = "mock-mission-id-1"
+export const mockMissionId2: UUID = "mock-mission-id-2"
+export const mockMissionId3: UUID = "mock-mission-id-3"
+
+export const mockCrewMember1Id: UUID = "mock-crew-member-id-1"
+export const mockCrewMember2Id: UUID = "mock-crew-member-id-2"
+export const mockCrewMember3Id: UUID = "mock-crew-member-id-3"
+export const mockCrewMember4Id: UUID = "mock-crew-member-id-4"
+export const mockCrewMember5Id: UUID = "mock-crew-member-id-5"
 
 export const mockInitialMissionsState: Missions = {
   missions: [],
   error: null
 }
 
-/*
+export const mockPilotWithMinimumExperience: CrewMember = {
+  id: mockCrewMember1Id,
+  role: {
+    experience: 12
+  }
+}
+export const mockPilotWithoutMinimumExperience: CrewMember = {
+  id: mockCrewMember2Id,
+  role: {
+    experience: 5
+  }
+}
 
-! TODO Create a members type, Pilot, Engineer & Passenger
-! TODO Create a job type, Navigation, Solar panels, Maintenance, Mechanics & Navigation
+export const mockEngineer1: CrewMember = {
+  id: mockCrewMember3Id,
+  role: {
+    experience: 5,
+    job: "Mechanics"
+  }
+}
 
-*/
+export const mockEngineer2: CrewMember = {
+  id: mockCrewMember4Id,
+  role: {
+    experience: 3,
+    job: "Solar Panels"
+  }
+}
+
+export const mockPassenger: CrewMember = {
+  id: mockCrewMember5Id,
+  role: {
+    age: 34,
+    wealth: "High"
+  }
+}
+
+export const mockCrewMembers1: CrewMember[] = [
+  mockEngineer1,
+  mockPassenger,
+  mockPilotWithoutMinimumExperience
+]
+
+export const mockCrewMembers2: CrewMember[] = [
+  mockEngineer1,
+  mockEngineer2,
+  mockPassenger,
+  mockPilotWithMinimumExperience
+]
+
 export const mockMission: Mission = {
-  id: mockUUID1,
+  id: mockMissionId1,
   name: "Expedition 2021-11",
-  members: 2,
+  members: [],
   destination: "Mars alpha-116",
   departure: { day: "07", month: "05", year: "2024" }
 }
@@ -29,16 +78,16 @@ export const mockMissionsState: Missions = {
   missions: [
     mockMission,
     {
-      id: mockUUID2,
+      id: mockMissionId2,
       name: "Mission B",
-      members: 5,
+      members: mockCrewMembers1,
       destination: "Jupiter Outpost",
       departure: { day: "22", month: "10", year: "2023" }
     },
     {
-      id: mockUUID3,
+      id: mockMissionId3,
       name: "Mission C",
-      members: 5,
+      members: mockCrewMembers2,
       destination: "Jupiter Outpost",
       departure: { day: "01", month: "07", year: "2024" }
     }

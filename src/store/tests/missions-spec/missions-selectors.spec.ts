@@ -7,8 +7,8 @@ import { describe, expect, it } from "vitest"
 import {
   mockInitialMissionsState,
   mockMission,
-  mockMissionsState,
-  mockUUID1
+  mockMissionId1,
+  mockMissionsState
 } from "./missionsMockData"
 import { RootState } from "@/store/store"
 
@@ -19,8 +19,8 @@ describe("missions: selectors", () => {
         missions: mockMissionsState
       }
 
-      const missions = selectMissions(state)
-      expect(missions).toEqual(mockMissionsState)
+      const { missions } = selectMissions(state)
+      expect(missions).toEqual(mockMissionsState.missions)
     })
   })
 
@@ -28,8 +28,9 @@ describe("missions: selectors", () => {
     const state: RootState = {
       missions: mockMissionsState
     }
+
     it("should handle selecting a mission by id", () => {
-      const selectedMission = selectMission(state, mockUUID1)
+      const selectedMission = selectMission(state, mockMissionId1)
 
       expect(selectMission).toBeDefined()
       expect(selectedMission).toEqual(mockMission)

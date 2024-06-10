@@ -8,13 +8,13 @@ import {
 import { BtnPrimary } from "@/components"
 import {
   mockMission,
-  mockUUID1
+  mockMissionId1
 } from "@/store/tests/missions-spec/missionsMockData"
 import { useAppDispatch, useAppSelector } from "@/store/storeHooks"
 
 const Home = () => {
   const { missions } = useAppSelector(selectMissions)
-  const mission = useAppSelector(state => selectMission(state, mockUUID1))
+  const mission = useAppSelector(state => selectMission(state, mockMissionId1))
   const dispatch = useAppDispatch()
   return (
     <>
