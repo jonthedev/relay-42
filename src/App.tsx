@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from "react-redux"
 import {
   addMission,
   editMission,
@@ -8,12 +7,12 @@ import {
 
 import { BtnPrimary } from "./components"
 import { mockMission } from "./store/tests/missions-spec/missionsMockData"
-import { RootState } from "./store/store"
+import { useAppDispatch, useAppSelector } from "./store/storeHooks"
 
 function App() {
-  const { missions } = useSelector(selectMissions)
-  const mission = useSelector((state: RootState) => selectMission(state, 1))
-  const dispatch = useDispatch()
+  const { missions } = useAppSelector(selectMissions)
+  const mission = useAppSelector(state => selectMission(state, 1))
+  const dispatch = useAppDispatch()
 
   return (
     <>
@@ -27,14 +26,12 @@ function App() {
       </button>
       <button
         onClick={() =>
-          dispatch(
-            editMission({ ...mockMission, destination: "Earth", id: 200 })
-          )
+          dispatch(editMission({ ...mockMission, destination: "Earth", id: 1 }))
         }
       >
         Edit Mission
       </button>
-      Mission: {mission?.id}
+      Mission: {mission?.destination}
     </>
   )
 }
