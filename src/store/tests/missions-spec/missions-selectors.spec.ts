@@ -1,3 +1,11 @@
+/**
+ * Test Suite for Missions Selectors
+ * ---------------------------------
+ *
+ * This test suite verifies the behavior of selectors in the missionsSlice module.
+ * It tests selectMissions, selectMissionById, and selectMissionsError functions
+ * against mock data and initial states.
+ */
 import {
   selectMission,
   selectMissions,

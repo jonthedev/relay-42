@@ -1,3 +1,12 @@
+/**
+ * Test Suite for Missions Reducers
+ * -------------------------------
+ *
+ * This test suite verifies the behavior of the reducers in the missionsSlice module.
+ * It tests addMission, editMission, and removeMission functions against mock initial states
+ * and various scenarios.
+ */
+
 import missionsReducer, {
   Mission,
   Missions,

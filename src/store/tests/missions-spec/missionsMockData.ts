@@ -1,3 +1,11 @@
+/**
+ * Constants for Mock Data and Test IDs
+ * ------------------------------------
+ *
+ * This file contains constants used across tests for mock IDs and other test data.
+ * Centralizing these constants here helps maintain consistency and ease of updates.
+ */
+
 import { type Mission, type Missions } from "@/features/missions/missionsSlice"
 import { CrewMember, UUID } from "@/types"
 
@@ -10,6 +18,14 @@ export const mockCrewMember2Id: UUID = "mock-crew-member-id-2"
 export const mockCrewMember3Id: UUID = "mock-crew-member-id-3"
 export const mockCrewMember4Id: UUID = "mock-crew-member-id-4"
 export const mockCrewMember5Id: UUID = "mock-crew-member-id-5"
+
+/**
+ * Usage Notes:
+ * ------------
+ *
+ * - Import these constants into test files to use them for mocking data.
+ * - Ensure that these IDs are used consistently across tests for consistency.
+ */
 
 export const mockInitialMissionsState: Missions = {
   missions: [],
