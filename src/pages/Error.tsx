@@ -1,3 +1,19 @@
+/**
+ * Error Component
+ * ---------------
+ *
+ * This file defines the Error component, which displays an appropriate error message
+ * based on the route error encountered while navigating through the application.
+ *
+ * The component uses the following hooks and functions from "react-router-dom":
+ * - useRouteError: To get the current route error.
+ * - isRouteErrorResponse: To determine if the error response is from the router and get its status.
+ *
+ * The Error component handles:
+ * - Displaying a custom 404 error page when the error status is 404.
+ * - Displaying a generic error message for other types of errors.
+ */
+
 import { useRouteError, Link, isRouteErrorResponse } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 
