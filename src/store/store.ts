@@ -1,3 +1,13 @@
+/**
+ * Redux Store Configuration
+ * --------------------------
+ *
+ * Configures the Redux store using @reduxjs/toolkit's configureStore function.
+ * Sets up the missions slice reducer to manage missions-related state.
+ * Defines types `RootState` and `AppDispatch` inferred from the store instance.
+ *
+ */
+
 import { configureStore } from "@reduxjs/toolkit"
 import missionsReducer from "@/features/missions/missionsSlice"
 

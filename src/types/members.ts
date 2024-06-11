@@ -1,3 +1,12 @@
+/**
+ * Crew Member Types
+ * -----------------
+ *
+ * This file contains TypeScript type definitions related to crew members.
+ * Types include Engineer, Pilot, Passenger, Role, and CrewMember.
+ *
+ */
+
 import { UUID } from "@/types"
 
 type Job = "Navigation" | "Solar Panels" | "Maintenance" | "Mechanics"

@@ -1,3 +1,12 @@
+/**
+ * Redux Hooks Configuration
+ * --------------------------
+ *
+ * Configures custom Redux hooks `useAppDispatch` and `useAppSelector` with type safety.
+ * Utilizes `useDispatch` and `useSelector` from `react-redux` to create typed versions
+ * for `AppDispatch` and `RootState`, respectively.
+ */
+
 import { useDispatch, useSelector } from "react-redux"
 import type { RootState, AppDispatch } from "./store"
 

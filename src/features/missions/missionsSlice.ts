@@ -1,3 +1,12 @@
+/**
+ * Missions Slice Types and Reducers
+ * ---------------------------------
+ *
+ * This file provides TypeScript type definitions for the missions slice,
+ * including the state shape, action creators, selectors, and reducer functions.
+ *
+ */
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 import { findIndexByPredicate } from "@/utils"

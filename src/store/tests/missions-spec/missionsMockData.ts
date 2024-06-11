@@ -4,6 +4,7 @@
  *
  * This file contains constants used across tests for mock IDs and other test data.
  * Centralizing these constants here helps maintain consistency and ease of updates.
+ *
  */
 
 import { type Mission, type Missions } from "@/features/missions/missionsSlice"
@@ -24,7 +25,7 @@ export const mockCrewMember5Id: UUID = "mock-crew-member-id-5"
  * ------------
  *
  * - Import these constants into test files to use them for mocking data.
- * - Ensure that these IDs are used consistently across tests for consistency.
+ *
  */
 
 export const mockInitialMissionsState: Missions = {
