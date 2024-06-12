@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router-dom"
 import Error from "@/pages/Error"
 import MissionManagement from "@/pages/MissionManagement"
-import HomeLayout from "@/pages/HomeLayout"
 import Missions from "@/pages/Missions"
+import App from "@/App"
+import { RouteObject } from "react-router-dom"
 
-const routes = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: "/",
-    element: <HomeLayout />,
+    element: <App />,
     errorElement: <Error />,
     children: [
       {
@@ -15,16 +15,12 @@ const routes = createBrowserRouter([
         element: <Missions heading="All missions will render here" />
       },
       {
-        path: "/missions-management",
-        element: <MissionManagement />
+        path: "/new-mission",
+        element: <MissionManagement />,
+        errorElement: <Error />
       }
     ]
-  },
-  {
-    path: "/new-mission",
-    element: <MissionManagement />,
-    errorElement: <Error />
   }
-])
+]
 
 export default routes
