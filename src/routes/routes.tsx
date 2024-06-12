@@ -1,13 +1,21 @@
 import { createBrowserRouter } from "react-router-dom"
-import Home from "@/pages/Home"
 import Error from "@/pages/Error"
 import MissionManagement from "@/pages/MissionManagement"
+import HomeLayout from "@/pages/HomeLayout"
+import Missions from "@/pages/Missions"
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-    errorElement: <Error />
+    element: <HomeLayout />,
+    errorElement: <Error />,
+    children: [
+      { index: true, element: <Missions /> },
+      {
+        path: "/missions-management",
+        element: <MissionManagement />
+      }
+    ]
   },
   {
     path: "/new-mission",
