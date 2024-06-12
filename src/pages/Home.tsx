@@ -9,7 +9,7 @@ import { BtnPrimary } from "@/components"
 import {
   mockMission,
   mockMissionId1
-} from "@/store/tests/missions-spec/missionsMockData"
+} from "@/tests/store/missions/missionsMockData"
 import { useAppDispatch, useAppSelector } from "@/store/storeHooks"
 
 const Home = () => {

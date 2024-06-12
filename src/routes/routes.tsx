@@ -10,7 +10,10 @@ const routes = createBrowserRouter([
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
-      { index: true, element: <Missions /> },
+      {
+        index: true,
+        element: <Missions heading="All missions will render here" />
+      },
       {
         path: "/missions-management",
         element: <MissionManagement />
