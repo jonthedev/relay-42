@@ -1,13 +1,13 @@
 import Missions from "@/pages/Missions"
+import Providers from "@/providers"
 import { render, screen } from "@testing-library/react"
 
 describe("Missions", () => {
-  it('should render "This is a mission" text when a string is provided', () => {
-    render(<Missions heading="This is a mission" />)
+  it("should render a heading with text 'missions'", () => {
+    render(<Missions />, { wrapper: Providers })
 
     const heading = screen.getByRole("heading")
     expect(heading).toBeInTheDocument()
-
-    screen.debug()
+    expect(heading).toHaveTextContent(/missions/i)
   })
 })

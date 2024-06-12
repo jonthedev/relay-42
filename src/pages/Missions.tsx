@@ -19,7 +19,7 @@ const Missions = () => {
 
   return (
     <>
-      <h1>Relay 42</h1>
+      <h1>Missions</h1>
       <BtnPrimary />
       {missions.map(mission => (
         <p key={mission.id}>{mission.destination}</p>
