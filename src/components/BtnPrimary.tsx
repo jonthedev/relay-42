@@ -1,6 +1,6 @@
 import { Button } from "./ui/button"
 
-const BtnPrimary = () => {
-  return <Button>Btn Primary</Button>
+const BtnPrimary = ({ text }: { text: string }) => {
+  return <Button>{text}</Button>
 }
 export default BtnPrimary
