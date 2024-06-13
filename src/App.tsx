@@ -1,10 +1,10 @@
 import Providers from "@/providers"
-import HomeLayout from "@/pages/HomeLayout"
+import { BaseLayout } from "@/pages"
 
 function App() {
   return (
     <Providers>
-      <HomeLayout />
+      <BaseLayout />
     </Providers>
   )
 }
