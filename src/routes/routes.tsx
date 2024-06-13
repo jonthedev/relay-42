@@ -12,7 +12,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Missions heading="All missions will render here" />
+        element: <Missions />
       },
       {
         path: "/new-mission",

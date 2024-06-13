@@ -8,9 +8,12 @@ import {
 import { BtnPrimary } from "@/components"
 import {
   mockMission,
-  mockMissionId1
+  mockMissionId1,
+  mockMissionsState
 } from "@/tests/store/missions/missionsMockData"
 import { useAppDispatch, useAppSelector } from "@/store/storeHooks"
+import { DataTable } from "@/components/Table/DataTable"
+import { columnsMissions } from "@/components/Table/Columns/ColumnsMission"
 
 const Missions = () => {
   const { missions } = useAppSelector(selectMissions)
@@ -35,6 +38,7 @@ const Missions = () => {
         Edit Mission
       </button>
       Mission: {mission?.destination}
+      <DataTable columns={columnsMissions} data={mockMissionsState.missions} />
     </>
   )
 }
