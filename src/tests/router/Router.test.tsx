@@ -29,4 +29,12 @@ describe("Router", () => {
       screen.getByRole("heading", { name: /missions/i })
     ).toBeInTheDocument()
   })
+
+  it("should render mission management page for /new-mission", () => {
+    navigateTo("/new-mission")
+
+    expect(
+      screen.getByRole("heading", { name: /new mission/i })
+    ).toBeInTheDocument()
+  })
 })
