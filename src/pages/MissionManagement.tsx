@@ -1,8 +1,10 @@
+import PageLayout from "./PageLayout"
+
 const MissionManagement = () => {
   return (
-    <div>
-      <h1>Configure a new mission</h1>
-    </div>
+    <PageLayout title="Configure a new mission">
+      Mission Management Form
+    </PageLayout>
   )
 }
 export default MissionManagement

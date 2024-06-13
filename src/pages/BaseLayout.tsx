@@ -2,9 +2,7 @@ import { Outlet } from "react-router-dom"
 
 const BaseLayout = () => {
   return (
-    <div className="align-element-center">
-      <header>Header</header>
-      <nav>Navbar</nav>
+    <div className="align-element-center py-20">
       <Outlet />
     </div>
   )
