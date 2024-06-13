@@ -37,4 +37,10 @@ describe("Router", () => {
       screen.getByRole("heading", { name: /new mission/i })
     ).toBeInTheDocument()
   })
+
+  it("should render the not found page for invalid routes", () => {
+    navigateTo("/invalid-route")
+
+    expect(screen.getByText(/not found/i)).toBeInTheDocument()
+  })
 })
