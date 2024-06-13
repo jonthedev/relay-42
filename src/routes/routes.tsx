@@ -1,6 +1,6 @@
-import Error from "@/pages/Error"
+import { Error } from "@/pages"
 import MissionManagement from "@/pages/MissionManagement"
-import Missions from "@/pages/Missions"
+import { Missions } from "@/pages"
 import App from "@/App"
 import { RouteObject } from "react-router-dom"
 
