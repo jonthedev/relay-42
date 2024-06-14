@@ -28,6 +28,10 @@ Test case for Relay 42
 
 `ShadCn:` Beautifully designed components that you can copy and paste into your apps.
 
+`Tanstack Tables:` Powerful and flexible table library for building tables and data grids in JavaScript and TypeScript applications
+
+`React Hook Forms:` Library for managing forms in React applications.
+
 `PostCSS:` A tool for transforming CSS with JavaScript plugins.
 
 ## Installation
@@ -69,4 +73,4 @@ Code Documentation
 
 Most files in the project contains a brief explanation at the top, describing its purpose and functionality. This is intended to help you quickly understand the role of each file. Please refer to these comments at the beginning of each file for more details.
 
-Ass the app progresses more definitions will be added.
+As the app progresses more definitions will be added.
