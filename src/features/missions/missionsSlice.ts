@@ -13,19 +13,14 @@ import { findIndexByPredicate } from "@/utils"
 import { v4 as uuidv4 } from "uuid"
 import { UUID } from "@/types"
 import { CrewMember } from "@/types/members"
-
-export type DepartureDate = {
-  day: string
-  month: string
-  year: string
-}
+import { mockMissionsState } from "@/tests/store/missions/missionsMockData"
 
 export type Mission = {
   id: UUID
   name: string
   members: CrewMember[]
   destination: string
-  departure: DepartureDate
+  departure: string
 }
 
 export type Missions = {
@@ -34,7 +29,7 @@ export type Missions = {
 }
 
 const initialState: Missions = {
-  missions: [],
+  missions: [...mockMissionsState.missions],
   error: null
 }
 

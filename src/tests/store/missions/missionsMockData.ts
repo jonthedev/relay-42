@@ -88,7 +88,7 @@ export const mockMission: Mission = {
   name: "Expedition 2021-11",
   members: [],
   destination: "Mars alpha-116",
-  departure: { day: "07", month: "05", year: "2024" }
+  departure: "07/05/2024"
 }
 
 export const mockMissionsState: Missions = {
@@ -99,14 +99,14 @@ export const mockMissionsState: Missions = {
       name: "Mission B",
       members: mockCrewMembers1,
       destination: "Jupiter Outpost",
-      departure: { day: "22", month: "10", year: "2023" }
+      departure: "22/10/2023"
     },
     {
       id: mockMissionId3,
       name: "Mission C",
       members: mockCrewMembers2,
       destination: "Jupiter Outpost",
-      departure: { day: "01", month: "07", year: "2024" }
+      departure: "01/07/2024"
     }
   ],
   error: null
