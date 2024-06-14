@@ -1,3 +1,12 @@
+/**
+ * Routes Configuration
+ * ---------------------------------
+ *
+ * This file provides TypeScript type definitions for the routes configuration,
+ * using RouteObject from react-router-dom to define route paths and components.
+ *
+ */
+
 import { Error } from "@/pages"
 import MissionManagement from "@/pages/MissionManagement"
 import { Missions } from "@/pages"

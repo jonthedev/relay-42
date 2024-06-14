@@ -1,3 +1,11 @@
+/**
+ * Module Exports
+ * ---------------------------------
+ *
+ * This file is responsible for exporting all page components.
+ *
+ */
+
 export { default as BaseLayout } from "./BaseLayout"
 export { default as Error } from "./Error"
 export { default as MissionManagement } from "./MissionManagement"
