@@ -69,4 +69,4 @@ Code Documentation
 
 Most files in the project contains a brief explanation at the top, describing its purpose and functionality. This is intended to help you quickly understand the role of each file. Please refer to these comments at the beginning of each file for more details.
 
-Ass the app progresses more definitions will be added.
+As the app progresses more definitions will be added.
