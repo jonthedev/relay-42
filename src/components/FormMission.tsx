@@ -1,6 +1,6 @@
-import { MissionSchemaType, missionSchema } from "@/schema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import { v4 as uuidv4 } from "uuid"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -12,12 +12,15 @@ import {
   FormMessage
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-// import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
+import { addMission } from "@/features/missions/missionsSlice"
+import { mockMission } from "@/tests/store/missions/missionsMockData"
+import { type Mission, missionSchema } from "@/schema"
 
 export function FormMission() {
-  //   const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
-  const form = useForm<MissionSchemaType>({
+  const form = useForm<Mission>({
     resolver: zodResolver(missionSchema),
     defaultValues: {
       name: "",
@@ -26,7 +29,7 @@ export function FormMission() {
     }
   })
 
-  function onSubmit(values: MissionSchemaType) {
+  function onSubmit(values: Mission) {
     console.log(values)
   }
 
@@ -49,6 +52,11 @@ export function FormMission() {
           }}
         />
         <Button type="submit">Submit</Button>
+        <button
+          onClick={() => dispatch(addMission({ ...mockMission, id: uuidv4() }))}
+        >
+          add....
+        </button>
       </form>
     </Form>
   )

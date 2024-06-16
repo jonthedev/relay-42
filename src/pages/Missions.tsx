@@ -6,7 +6,7 @@ import { PageLayout } from "@/pages"
 import { ButtonLink } from "@/components"
 
 const Missions = () => {
-  const { missions } = useAppSelector(selectMissions)
+  const missions = useAppSelector(selectMissions)
 
   return (
     <PageLayout title="Missions">

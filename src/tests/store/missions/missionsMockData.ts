@@ -7,18 +7,23 @@
  *
  */
 
-import { type Mission, type Missions } from "@/features/missions/missionsSlice"
-import { CrewMember, UUID } from "@/types"
+import {
+  type UUID,
+  type CrewMember,
+  type Mission,
+  type Missions
+} from "@/schema"
+import { RootState } from "@/store/store"
 
-export const mockMissionId1: UUID = "mock-mission-id-1"
-export const mockMissionId2: UUID = "mock-mission-id-2"
-export const mockMissionId3: UUID = "mock-mission-id-3"
+export const mockMissionId1: UUID = "123e4567-e89b-12d3-a456-426614174000"
+export const mockMissionId2: UUID = "123e4567-e89b-12d3-a456-426614174001"
+export const mockMissionId3: UUID = "123e4567-e89b-12d3-a456-426614174002"
 
-export const mockCrewMember1Id: UUID = "mock-crew-member-id-1"
-export const mockCrewMember2Id: UUID = "mock-crew-member-id-2"
-export const mockCrewMember3Id: UUID = "mock-crew-member-id-3"
-export const mockCrewMember4Id: UUID = "mock-crew-member-id-4"
-export const mockCrewMember5Id: UUID = "mock-crew-member-id-5"
+export const mockCrewMember1Id: UUID = "123e4567-e89b-12d3-a456-426614174003"
+export const mockCrewMember2Id: UUID = "123e4567-e89b-12d3-a456-426614174004"
+export const mockCrewMember3Id: UUID = "123e4567-e89b-12d3-a456-426614174005"
+export const mockCrewMember4Id: UUID = "123e4567-e89b-12d3-a456-426614174006"
+export const mockCrewMember5Id: UUID = "123e4567-e89b-12d3-a456-426614174007"
 
 /**
  * Usage Notes:
@@ -28,10 +33,7 @@ export const mockCrewMember5Id: UUID = "mock-crew-member-id-5"
  *
  */
 
-export const mockInitialMissionsState: Missions = {
-  missions: [],
-  error: null
-}
+export const mockInitialMissions: Missions = []
 
 export const mockPilotWithMinimumExperience: CrewMember = {
   id: mockCrewMember1Id,
@@ -91,23 +93,23 @@ export const mockMission: Mission = {
   departure: "07/05/2024"
 }
 
-export const mockMissionsState: Missions = {
-  missions: [
-    mockMission,
-    {
-      id: mockMissionId2,
-      name: "Mission B",
-      members: mockCrewMembers1,
-      destination: "Jupiter Outpost",
-      departure: "22/10/2023"
-    },
-    {
-      id: mockMissionId3,
-      name: "Mission C",
-      members: mockCrewMembers2,
-      destination: "Jupiter Outpost",
-      departure: "01/07/2024"
-    }
-  ],
-  error: null
-}
+export const mockMissions: Missions = [
+  mockMission,
+  {
+    id: mockMissionId2,
+    name: "Mission B",
+    members: mockCrewMembers1,
+    destination: "Jupiter Outpost",
+    departure: "22/10/2023"
+  },
+  {
+    id: mockMissionId3,
+    name: "Mission C",
+    members: mockCrewMembers2,
+    destination: "Jupiter Outpost",
+    departure: "01/07/2024"
+  }
+]
+
+export const mockRootState: RootState = { missions: mockInitialMissions }
+export const mockRootStateWithMissions: RootState = { missions: mockMissions }

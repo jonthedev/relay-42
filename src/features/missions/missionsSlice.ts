@@ -10,80 +10,75 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/store/store"
 import { findIndexByPredicate } from "@/utils"
-import { v4 as uuidv4 } from "uuid"
-import { UUID } from "@/types"
-import { CrewMember } from "@/types/members"
-import { mockMissionsState } from "@/tests/store/missions/missionsMockData"
+import { missionSchema, type UUID, type Mission, type Missions } from "@/schema"
 
-export type Mission = {
-  id: UUID
-  name: string
-  members: CrewMember[]
-  destination: string
-  departure: string
-}
-
-export type Missions = {
-  missions: Mission[]
-  error: string | null
-}
-
-const initialState: Missions = {
-  missions: [...mockMissionsState.missions],
-  error: null
-}
+const initialState: Missions = []
 
 export const missionsSlice = createSlice({
   name: "missions",
   initialState,
   reducers: {
-    addMission: (state, action: PayloadAction<Omit<Mission, "id">>) => {
-      const { missions } = state
+    addMission: (state, action: PayloadAction<Mission>) => {
+      const missions = state
+      const result = missionSchema.safeParse(action.payload)
+
+      if (!result.success) {
+        console.error(`Invalid mission payload: ${result.error.message}`)
+        return
+      }
+
       const index = findIndexByPredicate(
         missions,
         mission => mission.name === action.payload.name
       )
 
       if (index !== -1) {
-        state.error = "A mission with that name already exists"
+        console.error("A mission with that name already exists")
         return
       }
 
-      const newMission = {
-        id: uuidv4(),
-        ...action.payload
-      }
-      state.missions.push(newMission)
-      state.error = null
+      const mission = result.data
+
+      state.push(mission)
     },
     removeMission: (state, action: PayloadAction<Pick<Mission, "id">>) => {
-      const { missions } = state
+      const missions = state
+      const result = missionSchema.safeParse(action.payload)
+
+      if (!result.success) {
+        console.error(`Invalid mission payload: ${result.error.message}`)
+        return
+      }
+
       const index = findIndexByPredicate(
         missions,
         mission => mission.id === action.payload.id
       )
 
       if (index === -1) {
-        state.error = "Mission not found"
+        console.error("This mission doesn't exist")
         return
       }
 
-      state.missions.splice(index, 1)
-      state.error = null
+      state.splice(index, 1)
     },
     editMission: (state, action: PayloadAction<Mission>) => {
+      const result = missionSchema.safeParse(action.payload)
+
+      if (!result.success) {
+        console.error(`Invalid mission payload: ${result.error.message}`)
+        return
+      }
       const index = findIndexByPredicate(
-        state.missions,
+        state,
         mission => mission.id === action.payload.id
       )
 
       if (index === -1) {
-        state.error = "Mission not found"
         return
       }
 
-      state.missions[index] = action.payload
-      state.error = null
+      state[index] = action.payload
     }
   }
 })
@@ -95,9 +90,6 @@ export const selectMissions = (state: RootState) => state.missions
 export const selectMission = (
   state: RootState,
   id: UUID
-): Mission | undefined =>
-  state.missions.missions.find(mission => mission.id === id)
-
-export const selectMissionsError = (state: RootState) => state.missions.error
+): Mission | undefined => state.missions.find(mission => mission.id === id)
 
 export default missionsSlice.reducer

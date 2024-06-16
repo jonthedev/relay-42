@@ -3,57 +3,47 @@
  * -------------------------------
  *
  * This test suite verifies the behavior of the reducers in the missionsSlice module.
+ *
  * It tests addMission, editMission, and removeMission functions against mock initial states
  * and various scenarios.
  */
 
 import missionsReducer, {
-  Mission,
-  Missions,
   addMission,
   editMission,
   removeMission
 } from "@/features/missions/missionsSlice"
 import { describe, it, expect } from "vitest"
 import {
-  mockInitialMissionsState,
+  mockInitialMissions,
   mockMission,
-  mockMissionsState
+  mockMissions
 } from "./missionsMockData"
 import { findIndexByPredicate } from "@/utils"
+import { Mission, Missions } from "@/schema"
 
 describe("missions: reducers", () => {
   describe("addMission", () => {
     it("should handle adding a new mission", () => {
-      const prevMissionsState: Missions = mockInitialMissionsState
+      let initialMissions: Missions = mockInitialMissions
       const newMission: Mission = mockMission
-      const newState = missionsReducer(
-        prevMissionsState,
-        addMission(newMission)
-      )
-      expect(newState).toEqual({
-        missions: [newMission],
-        error: null
-      })
+      initialMissions = missionsReducer(initialMissions, addMission(newMission))
+      expect(initialMissions).toEqual([newMission])
     })
   })
 
   describe("removeMission", () => {
     it("should handle removing a mission", () => {
-      const prevMissionsState: Missions = mockMissionsState
+      const prevMissionsState: Missions = mockMissions
 
       const stateWithMissionRemoved = missionsReducer(
         prevMissionsState,
         removeMission(mockMission)
       )
-      expect(stateWithMissionRemoved.missions).toHaveLength(
-        prevMissionsState.missions.length - 1
-      )
+      expect(stateWithMissionRemoved).toHaveLength(prevMissionsState.length - 1)
 
       expect(
-        stateWithMissionRemoved.missions.some(
-          mission => mission.id === mockMission.id
-        )
+        stateWithMissionRemoved.some(mission => mission.id === mockMission.id)
       ).toBeFalsy()
     })
   })
@@ -67,18 +57,18 @@ describe("missions: reducers", () => {
       }
 
       const stateWithEditedMission = missionsReducer(
-        mockMissionsState,
+        mockMissions,
         editMission(editedMission)
       )
 
       const index = findIndexByPredicate(
-        stateWithEditedMission.missions,
+        stateWithEditedMission,
         mission => mission.id === editedMission.id
       )
 
       expect(index).not.toBe(-1)
 
-      expect(stateWithEditedMission.missions[index]).toEqual(editedMission)
+      expect(stateWithEditedMission[index]).toEqual(editedMission)
     })
   })
 })

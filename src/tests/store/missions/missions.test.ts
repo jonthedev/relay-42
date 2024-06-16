@@ -7,20 +7,18 @@
  */
 
 import { describe, it, expect } from "vitest"
-import {
-  type Missions,
-  selectMissions
-} from "@/features/missions/missionsSlice"
-import { mockInitialMissionsState } from "./missionsMockData"
+import { selectMissions } from "@/features/missions/missionsSlice"
+import { mockInitialMissions } from "./missionsMockData"
 import { type RootState } from "@/store/store"
+import { Missions } from "@/schema"
 
 describe("missions", () => {
   it("should return the initial state", () => {
     const initialState: RootState = {
-      missions: mockInitialMissionsState
+      missions: []
     }
     const selectedMissions: Missions = selectMissions(initialState)
 
-    expect(selectedMissions).toEqual(mockInitialMissionsState)
+    expect(selectedMissions).toEqual(mockInitialMissions)
   })
 })

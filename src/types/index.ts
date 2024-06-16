@@ -3,8 +3,7 @@
  * -------------------------------
  *
  * This file contains TypeScript type definitions and interfaces used throughout the application.
- * Centralizing type declarations here ensures consistency, reusability, and easier maintenance.
+ *
+ * You can also refer to the schema folder for types
+ *
  */
-
-export * from "./uuid"
-export * from "./members"

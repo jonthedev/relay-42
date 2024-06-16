@@ -1,5 +1,4 @@
-import { type Mission } from "@/features/missions/missionsSlice"
-import { CrewMember } from "@/types"
+import { CrewMember, type Mission } from "@/schema"
 import { ColumnDef } from "@tanstack/react-table"
 
 export const columnsMissions: ColumnDef<Mission>[] = [
