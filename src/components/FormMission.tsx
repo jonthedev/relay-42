@@ -23,8 +23,10 @@ export function FormMission() {
   const form = useForm<Mission>({
     resolver: zodResolver(missionSchema),
     defaultValues: {
+      id: uuidv4(),
       name: "",
-      departure: "01/30/2024",
+      members: [],
+      departure: "",
       destination: ""
     }
   })
@@ -44,7 +46,37 @@ export function FormMission() {
               <FormItem>
                 <FormLabel>Mission Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Expedition 2021" {...field} />
+                  <Input placeholder="Expedition 2024" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )
+          }}
+        />
+        <FormField
+          control={form.control}
+          name="destination"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Destination</FormLabel>
+                <FormControl>
+                  <Input placeholder="Mars Alpha 116" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )
+          }}
+        />
+        <FormField
+          control={form.control}
+          name="departure"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Departure</FormLabel>
+                <FormControl>
+                  <Input placeholder="dd/mm/yyyy" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
