@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux"
 import { addMission } from "@/features/missions/missionsSlice"
 import { mockMission } from "@/tests/store/missions/missionsMockData"
 import { type Mission, missionSchema } from "@/schema"
+import { Container } from "@/components"
 
 export function FormMission() {
   const dispatch = useDispatch()
@@ -35,54 +36,54 @@ export function FormMission() {
     console.log(values)
   }
 
+  interface FormFieldInputs {
+    name: keyof Omit<Mission, "members" | "id">
+    label: string
+    placeholder: string
+  }
+
+  const formFieldInputs: FormFieldInputs[] = [
+    {
+      name: "name",
+      label: "Mission Name",
+      placeholder: "Expedition 2021"
+    },
+    {
+      name: "destination",
+      label: "Destination",
+      placeholder: "Mars Alpha 116"
+    },
+    {
+      name: "departure",
+      label: "Departure",
+      placeholder: "dd/mm/yyyy"
+    }
+  ]
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Mission Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Expedition 2024" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
-        />
-        <FormField
-          control={form.control}
-          name="destination"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Destination</FormLabel>
-                <FormControl>
-                  <Input placeholder="Mars Alpha 116" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
-        />
-        <FormField
-          control={form.control}
-          name="departure"
-          render={({ field }) => {
-            return (
-              <FormItem>
-                <FormLabel>Departure</FormLabel>
-                <FormControl>
-                  <Input placeholder="dd/mm/yyyy" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
-        />
+        <Container className="flex">
+          {formFieldInputs.map((field, index) => (
+            <FormField
+              key={index}
+              control={form.control}
+              name={field.name}
+              render={({ field: formField }) => {
+                return (
+                  <FormItem className="grow">
+                    <FormLabel>{field.label}</FormLabel>
+                    <FormControl>
+                      <Input {...formField} placeholder={field.placeholder} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )
+              }}
+            />
+          ))}
+        </Container>
+
         <Button type="submit">Submit</Button>
         <button
           onClick={() => dispatch(addMission({ ...mockMission, id: uuidv4() }))}
